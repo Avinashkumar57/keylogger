@@ -1,35 +1,19 @@
-# Key Logger in Python
+## Keylogger
 
-## Overview
+This Python-based keylogger records keystrokes, mouse activity, and takes periodic screenshots. The data is logged and sent via email at regular intervals. It also supports automatic cleanup of logs and screenshots after sending the report.
+Features
 
-This Python Key Logger is a simple program that records keystrokes on a user's machine. It can be used for educational purposes to understand how keylogging works, or to monitor usage on a personal device. 
-
-**Disclaimer:** This project is intended for educational purposes only. Unauthorized use of keyloggers may violate privacy laws and ethical guidelines. Always ensure you have permission before monitoring any device.
-
-## Features
-
-- Captures all keystrokes in real-time
-- Logs keystrokes to a file
-- Supports customizable logging intervals
-- Lightweight and easy to use
+    Records all keystrokes, mouse clicks, movements, and scroll events.
+    Takes screenshots at configurable intervals.
+    Sends the log and screenshots to a specified email at regular intervals.
+    Cleans up local log and screenshots after sending the report.
+    Fully configurable email and timer settings.
 
 ## Prerequisites
 
-- Python 3.x
-- Required libraries (listed below)
-  1.import logging
-  2.import smtplib
-  3.import threading
-  4.import os
-  5.import shutil
-  6.from datetime import datetime
-  7.import pyscreenshot
-  8.from pynput import keyboard
-  9.from pynput.mouse import Listener, Button
- 10.from email.mime.multipart import MIMEMultipart
- 11.from email.mime.text import MIMEText
- 12.from email.mime.base import MIMEBase
- 13.from email import encoders
+    Python 3.x
+    Internet connection for sending emails.
+    Email account (preferably Gmail) for sending logs.
 
 ## Installation
 
@@ -46,6 +30,33 @@ This Python Key Logger is a simple program that records keystrokes on a user's m
    pip install pynput
    ```
 
+## Required Libraries
+
+Make sure you have the following libraries installed before running the keylogger:
+
+bash
+
+pip install pynput pyscreenshot
+
+
+## Configure Email Credentials:
+
+    Open the script and set your email credentials in the following variables:
+
+    python
+
+    EMAIL_ADDRESS = "your_email@gmail.com"
+    EMAIL_PASSWORD = "your_password"
+
+## Set Email and Screenshot Intervals:
+
+    You can configure how often the email reports and screenshots should be sent:
+
+    python
+
+    SEND_EMAIL_EVERY = 60  # Time in seconds between email reports
+    SEND_SCREENSHOT_EVERY = 20  # Time in seconds between screenshots
+
 ## Usage
 
 1. Open the terminal or command prompt.
@@ -55,42 +66,41 @@ This Python Key Logger is a simple program that records keystrokes on a user's m
    ```
 3. The keylogger will start capturing keystrokes and saving them to `log.txt`.
 
+## Run the Keylogger:
+
+    Start the keylogger using:
+
+    bash
+
+        python keylogger.py
+
+    Stopping the Keylogger:
+        To stop the keylogger, you can interrupt it manually (Ctrl+C). The script will automatically clean up any temporary files.
 ### Stopping the Key Logger
 
 To stop the keylogger, simply terminate the script (e.g., using `Ctrl + C` in the terminal).
 
-## Configuration
+## Code Explanation
+KeyLogger Class
 
-You can customize the following parameters in `keylogger.py`:
+    Initialization (__init__): Sets up email and screenshot intervals, creates necessary folders, and starts the log.
+    Keyboard and Mouse Event Handlers: Tracks all keypresses and mouse events, including clicks, movements, and scrolls.
+    Email Report (send_mail): Sends the collected log and screenshots as an email attachment.
+    Screenshot Capture (screenshot): Periodically captures screenshots and stores them locally.
+    Logging: All captured data is logged to a file (keylogger.log).
 
-- **log_file**: Change the name of the log file.
-- **logging_interval**: Set how often to log the keystrokes (in seconds).
+Cleanup
 
-## Example Log Output
+    Log and Screenshot Cleanup: After sending the email, the keylogger deletes the local logs and screenshots.
 
-The log file (`log.txt`) will contain all captured keystrokes in the order they were typed. Each keypress will be recorded on a new line.
+## Important Note
 
-## Contributions
+    This keylogger is for educational purposes only. Using this software for illegal activities such as unauthorized surveillance or monitoring without consent is prohibited.
 
-Contributions are welcome! Feel free to fork the repository and submit a pull request. Please ensure that your code adheres to the existing style and includes appropriate documentation.
-
-## Acknowledgments
-
-- [Pynput](https://pypi.org/project/pynput/) for handling keyboard events in Python.
+**Note:** Please use this tool responsibly and ethically.
 
 ## Contact
 
 For questions or inquiries, feel free to reach out:
 
-- Email: your.email@example.com
-- GitHub: [Avinashkumar57](https://github.com/Avinashkumar57)
-
----
-
-**Note:** Please use this tool responsibly and ethically.
-
-
-
-
-
-
+- GitHub: https://github.com/Avinashkumar57
